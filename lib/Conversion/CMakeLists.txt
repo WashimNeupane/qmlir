@@ -1,0 +1,6 @@
+add_subdirectory(QuantumToLLVM)
+add_subdirectory(QASMToQuantum)
+add_subdirectory(QASMToSCF)
+add_subdirectory(QuantumToQASM)
+add_subdirectory(QuantumToZX)
+add_subdirectory(ZXToQuantum)
