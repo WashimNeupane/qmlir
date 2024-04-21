@@ -368,7 +368,7 @@ class PrimitiveSingleParamGateOp<string mnemonic, list<OpTrait> traits = []>
 // Standard Quantum Gates
 //===----------------------------------------------------------------------===//
 
-def PauliXGateOp : SimplePrimitiveGateOp<"X"> {
+def PauliXGateOp : SimplePrimitiveGateOp<"X", [Unitary, Hermitian]> {
   let summary = "Quantum Pauli X gate";
   let description = [{
       Takes a qubit array, and applies the Pauli X gate to each qubit.
@@ -385,7 +385,7 @@ def PauliXGateOp : SimplePrimitiveGateOp<"X"> {
   let hasFolder = 1;
 }
 
-def PauliYGateOp : SimplePrimitiveGateOp<"Y"> {
+def PauliYGateOp : SimplePrimitiveGateOp<"Y", [Unitary, Hermitian]> {
   let summary = "Quantum Pauli X gate";
   let description = [{
       Takes a qubit array, and applies the Pauli Y gate to each qubit.
@@ -402,7 +402,7 @@ def PauliYGateOp : SimplePrimitiveGateOp<"Y"> {
   let hasFolder = 1;
 }
 
-def PauliZGateOp : SimplePrimitiveGateOp<"Z"> {
+def PauliZGateOp : SimplePrimitiveGateOp<"Z", [Unitary, Hermitian]> {
   let summary = "Quantum Pauli X gate";
   let description = [{
       Takes a qubit array, and applies the Pauli Z gate to each qubit.
@@ -419,7 +419,7 @@ def PauliZGateOp : SimplePrimitiveGateOp<"Z"> {
   let hasFolder = 1;
 }
 
-def HadamardGateOp : SimplePrimitiveGateOp<"H"> {
+def HadamardGateOp : SimplePrimitiveGateOp<"H", [Unitary, Hermitian]> {
   let summary = "Quantum Hadamard gate";
   let description = [{
       Takes a qubit array, and applies the Hadamard gate to each qubit.
@@ -436,30 +436,30 @@ def HadamardGateOp : SimplePrimitiveGateOp<"H"> {
   let hasFolder = 1;
 }
 
-def PhaseGateOp : SimplePrimitiveGateOp<"S"> {
+def PhaseGateOp : SimplePrimitiveGateOp<"S", [Unitary]> {
   let summary = "Phase (S) gate";
 }
-def PhaseDaggerGateOp : SimplePrimitiveGateOp<"Sdg"> {
+def PhaseDaggerGateOp : SimplePrimitiveGateOp<"Sdg", [Unitary]> {
   let summary = "Phase inverse (S-dagger) gate";
 }
-def TGateOp : SimplePrimitiveGateOp<"T"> {
+def TGateOp : SimplePrimitiveGateOp<"T", [Unitary]> {
   let summary = "T gate";
 }
-def TDaggerGateOp : SimplePrimitiveGateOp<"Tdg"> {
+def TDaggerGateOp : SimplePrimitiveGateOp<"Tdg", [Unitary]> {
   let summary = "T-dagger gate";
 }
 
-def RotateXOp : PrimitiveSingleParamGateOp<"Rx"> {
+def RotateXOp : PrimitiveSingleParamGateOp<"Rx", [Unitary]> {
   let summary = "Rotate about X axis by the given angle.";
 }
-def RotateYOp : PrimitiveSingleParamGateOp<"Ry"> {
+def RotateYOp : PrimitiveSingleParamGateOp<"Ry",[Unitary]> {
   let summary = "Rotate about Y axis by the given angle.";
 }
-def RotateZOp : PrimitiveSingleParamGateOp<"Rz"> {
+def RotateZOp : PrimitiveSingleParamGateOp<"Rz",[Unitary]> {
   let summary = "Rotate about Z axis by the given angle.";
 }
 
-def CNOTGateOp : Quantum_Op<"CNOT", [NoSideEffect]> {
+def CNOTGateOp : Quantum_Op<"CNOT", [NoSideEffect, Unitary, Hermitian]> {
   let summary = "Quantum CNOT gate";
   let description = [{
       Takes two 1-qubit array, and applies the CNOT gate,
@@ -487,7 +487,7 @@ def CNOTGateOp : Quantum_Op<"CNOT", [NoSideEffect]> {
   let hasFolder = 1;
 }
 
-def UniversalRotationGateOp : Quantum_Op<"U", [NoSideEffect, AllTypesMatch<["qinp", "qout"]>]> {
+def UniversalRotationGateOp : Quantum_Op<"U", [NoSideEffect, Unitary, AllTypesMatch<["qinp", "qout"]>]> {
   let summary = "Quantum Universal Single Qubit Rotation Op";
   let description = [{
     Takes a single qubit and rotates it based on the parameters:
