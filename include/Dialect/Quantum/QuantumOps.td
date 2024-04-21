@@ -526,4 +526,25 @@ def CanonicalizeSupportOp : Quantum_Op<"canon"> {
   let hasCanonicalizer = 1;
 }
 
+//===----------------------------------------------------------------------===//
+// Define new dialect traits
+//===----------------------------------------------------------------------===//
+def Unitary : NativeOpTrait<"UnitaryTrait"> {
+let summary = "Assign an Op as Native Unitary Gate Op";
+}
+
+def Hermitian : NativeOpTrait<"HermitianTrait">{
+let summary = "Assign an Op as Hermitian (matrix with its itself as self inverse) Op";
+}
+
+def Meta : NativeOpTrait<"MetaOpTrait">{
+let summary = "Assign an Op as Meta Op";
+}
+
+def ImplicitQuantumTerminator : SingleBlockImplicitTerminator<"TerminatorOp">
+{
+let summary = "Assign an Op as Quantum Terminator Op";
+}
+
+
 #endif // QUANTUM_OPS
